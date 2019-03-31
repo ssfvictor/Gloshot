@@ -1,0 +1,43 @@
+{
+  "name": "GloShot",
+  "version": "1.0",
+  "description": "Extension to make integration with Glo Boards!",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "get_started16.png",
+      "32": "get_started32.png",
+      "48": "get_started48.png",
+      "128": "get_started128.png"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "get_started16.png",
+    "32": "get_started32.png",
+    "48": "get_started48.png",
+    "128": "get_started128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs", "all_urls", 
+    "declarativeContent",
+    "activeTab",
+    "identity",
+    "*://*/**://*/*", "contextMenus", "notifications"
+  ],
+  "commands": {
+    "screenshot": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "Screenshot"
+    }
+  },
+  "web_accessible_resources": ["popup.css"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

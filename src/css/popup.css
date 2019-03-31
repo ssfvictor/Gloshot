@@ -1,0 +1,94 @@
+body {
+  height: 350px;
+  width: 650px;
+  outline: none;
+  margin:0px auto 0px auto;
+  position: relative;
+}
+
+h2, h3 {
+  }
+
+select {
+  width: 90%;
+}
+
+.text-left {
+  text-align: right;
+}
+
+.box {
+  display: none;
+  width: 100%;
+}
+
+.thumbnail {
+  }
+
+.thumbnail:hover {
+  background-color: transparent;
+  overflow-x: visible;
+}
+
+.thumbnail span {
+  position: absolute;
+  left: 20px;
+  visibility: hidden;
+}
+
+.thumbnail span img {
+  border-width: 0;
+  padding: 2px;
+}
+
+.thumbnail:hover span {
+  visibility: visible;
+  top: 0;
+  right: 60px; 
+  overflow: overlay;
+}
+
+table {
+  width: 323px;
+  table-layout:fixed;
+  margin: 2px;
+  position:fixed;
+  border-collapse: separate !important;
+}
+
+tbody {
+  height: 262px;
+	overflow:auto;
+	overflow-x:hidden;
+	display:block;
+	width:100%;
+}
+
+tbody tr {
+	display:table;
+	width:100%;
+  table-layout:fixed;
+  margin: 5px;
+}
+
+th, td {
+  padding:5px 10px;
+  margin: 1px;
+	border:1px transparent;
+}
+
+.btn {
+  background-color: darkred; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.background-form {
+  background-color: #f7f7f7;
+}
