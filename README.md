@@ -11,6 +11,14 @@
     4. Select the `build` folder.
 
 
+## To Create a Glo Card
+1. In the app select the board and column 
+2. select some text and right-click to create a card
+
+## To take a Screenshot
+1. In the app select the board, column and card
+2. To take a screenshot use the command Alt + S
+3. The screenshot appear in app 
 
 
 MIT License

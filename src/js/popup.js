@@ -317,8 +317,13 @@ const sendAttachments = async () => {
     let card_id = localStorage.getItem("card_id");
     let token = result.token;
     let comment = { text: "" };
-    let screens = JSON.parse(localStorage.getItem("glooshot_screens")).screens;
+    let gloshotScreens = JSON.parse(localStorage.getItem("glooshot_screens"));
     let formData = new FormData();
+
+    let screens = [];
+    if(gloshotScreens){
+      screens = gloshotScreens.screens;
+    }
 
     for (const screen of screens) {
       let blob = dataUrlToBlob(screen.data);
@@ -343,20 +348,41 @@ const sendAttachments = async () => {
     }
 
     try {
+      let commentText = document.getElementById("textAreaComment");
+      comment.text = commentText.value + " " +  comment.text;
+
       let responseComment = await GloSDK(token).boards.cards.comments.create(
         board_id,
         card_id,
         comment
       );
+
+      let notificationOptions = {
+        type: "basic",
+        iconUrl: "get_started48.png",
+        title: "Glo send attachments and comment",
+        message: `The card has been updated!`
+      };
+      chrome.notifications.create("glocomment", notificationOptions);
+      
       localStorage.removeItem("glooshot_screens");
       deleteRowsAttachments();
-      chrome.browserAction.setBadgeText({ text: total + "" });  
-    } catch (error) {}
+    } catch (error) { 
+      
+      let notificationOptions = {
+        type: "basic",
+        iconUrl: "get_started48.png",
+        title: "Error glo",
+        message: error.response.data.message
+      };
+      chrome.notifications.create("gloerrorcomment", notificationOptions);
+      
+    }
   });
 };
 function deleteRowsAttachments() {
   var table = document.getElementById("tblAttachment");
-  for (var i = table.rows.length - 1; i > 0; i--) {
+  for (var i = table.rows.length - 1; i >= 0; i--) {
     table.deleteRow(i);
   }
 }
